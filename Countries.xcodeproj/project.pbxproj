@@ -11,6 +11,12 @@
 		A55BBE202B175CED0050C1BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BBE1F2B175CED0050C1BF /* ContentView.swift */; };
 		A55BBE222B175CEE0050C1BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A55BBE212B175CEE0050C1BF /* Assets.xcassets */; };
 		A55BBE252B175CEE0050C1BF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A55BBE242B175CEE0050C1BF /* Preview Assets.xcassets */; };
+		A55BBE2C2B175DF70050C1BF /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BBE2B2B175DF70050C1BF /* Country.swift */; };
+		A55BBE2F2B1764580050C1BF /* Gzip in Frameworks */ = {isa = PBXBuildFile; productRef = A55BBE2E2B1764580050C1BF /* Gzip */; };
+		A55BBE312B17A8740050C1BF /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BBE302B17A8740050C1BF /* Helpers.swift */; };
+		A55BBE332B17C1960050C1BF /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BBE322B17C1960050C1BF /* Quiz.swift */; };
+		A55BBE352B1803620050C1BF /* CountryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BBE342B1803620050C1BF /* CountryListView.swift */; };
+		A55BBE372B1803A20050C1BF /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55BBE362B1803A20050C1BF /* QuizView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,11 @@
 		A55BBE1F2B175CED0050C1BF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A55BBE212B175CEE0050C1BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A55BBE242B175CEE0050C1BF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A55BBE2B2B175DF70050C1BF /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		A55BBE302B17A8740050C1BF /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		A55BBE322B17C1960050C1BF /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
+		A55BBE342B1803620050C1BF /* CountryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListView.swift; sourceTree = "<group>"; };
+		A55BBE362B1803A20050C1BF /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A55BBE2F2B1764580050C1BF /* Gzip in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +67,11 @@
 				A55BBE1F2B175CED0050C1BF /* ContentView.swift */,
 				A55BBE212B175CEE0050C1BF /* Assets.xcassets */,
 				A55BBE232B175CEE0050C1BF /* Preview Content */,
+				A55BBE2B2B175DF70050C1BF /* Country.swift */,
+				A55BBE302B17A8740050C1BF /* Helpers.swift */,
+				A55BBE322B17C1960050C1BF /* Quiz.swift */,
+				A55BBE342B1803620050C1BF /* CountryListView.swift */,
+				A55BBE362B1803A20050C1BF /* QuizView.swift */,
 			);
 			path = Countries;
 			sourceTree = "<group>";
@@ -83,6 +100,9 @@
 			dependencies = (
 			);
 			name = Countries;
+			packageProductDependencies = (
+				A55BBE2E2B1764580050C1BF /* Gzip */,
+			);
 			productName = Countries;
 			productReference = A55BBE1A2B175CED0050C1BF /* Countries.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +131,9 @@
 				Base,
 			);
 			mainGroup = A55BBE112B175CED0050C1BF;
+			packageReferences = (
+				A55BBE2D2B1764580050C1BF /* XCRemoteSwiftPackageReference "GzipSwift" */,
+			);
 			productRefGroup = A55BBE1B2B175CED0050C1BF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,7 +161,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A55BBE202B175CED0050C1BF /* ContentView.swift in Sources */,
+				A55BBE332B17C1960050C1BF /* Quiz.swift in Sources */,
+				A55BBE2C2B175DF70050C1BF /* Country.swift in Sources */,
 				A55BBE1E2B175CED0050C1BF /* CountriesApp.swift in Sources */,
+				A55BBE372B1803A20050C1BF /* QuizView.swift in Sources */,
+				A55BBE312B17A8740050C1BF /* Helpers.swift in Sources */,
+				A55BBE352B1803620050C1BF /* CountryListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +370,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A55BBE2D2B1764580050C1BF /* XCRemoteSwiftPackageReference "GzipSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/1024jp/GzipSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A55BBE2E2B1764580050C1BF /* Gzip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A55BBE2D2B1764580050C1BF /* XCRemoteSwiftPackageReference "GzipSwift" */;
+			productName = Gzip;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A55BBE122B175CED0050C1BF /* Project object */;
 }

@@ -1,21 +1,20 @@
 //
-//  ContentView.swift
-//  Countries
-//
-//  Created by Josef Gradinger on 29.11.23.
-//
-
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            CountryListView()
+                .tabItem {
+                    Image(systemName: "globe")
+                    Text("Countries")
+                }
+            QuizView()
+                .tabItem {
+                    Image(systemName: "checkmark.circle.badge.questionmark")
+                    Text("Flag quiz")
+                }
         }
-        .padding()
     }
 }
 
