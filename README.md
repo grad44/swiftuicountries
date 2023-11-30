@@ -1,6 +1,6 @@
 # What is this?
 
-Just a litte SwiftUI for testing out some feature like API requests. To be specific, the app
+Just a litte SwiftUI for testing out some features like REST API requests, navigation views and tab views. To be specific, the app
 
 * fetches all countries from [REST countires](https://restcountries.com/)
 * shows them in a list (this list can be sorted by various properties)
