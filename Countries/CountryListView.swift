@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import MapKit
 
 class CountryViewModel: ObservableObject {
     @Published var isLoading = false
@@ -39,7 +40,7 @@ class CountryViewModel: ObservableObject {
             isLoading = false
         }
     }
-
+    
     
     func toggleSorting() {
         sortedAscending.toggle()
@@ -49,6 +50,11 @@ class CountryViewModel: ObservableObject {
 
 struct CountryListView: View {
     @ObservedObject var viewModel = CountryViewModel()
+    @State var region: MKCoordinateRegion = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 0, longitude: 0), // Default coordinates
+        span: MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10)
+    )
+    @State private var selectedItem: Country?
     
     var body: some View {
         NavigationView {
@@ -58,28 +64,32 @@ struct CountryListView: View {
                 }
                 
                 List(viewModel.countries) { country in
-                    HStack {
-                        if let url = URL(string: country.flag.png) {
-                            AsyncImage(url: url) { image in
-                                image.resizable()
-                            } placeholder: {
-                                ProgressView()
+                    Button(action: {
+                        selectedItem = country
+                    }) {
+                            HStack {
+                                if let url = URL(string: country.flag.png) {
+                                    AsyncImage(url: url) { image in
+                                        image.resizable()
+                                    } placeholder: {
+                                        ProgressView()
+                                    }
+                                    .scaledToFit()
+                                    .frame(width: 50)
+                                    .padding([.trailing], 10)
+                                }
+                                VStack(alignment: .leading) {
+                                    Text(country.names.common)
+                                        .font(.title2)
+                                        .fontWeight(.bold)
+                                    Text("Official Name: \(country.names.official)")
+                                    
+                                    Text("Population: \(country.population)")
+                                    Text("Area: \(formatDoubleValues(val: country.area, maximumFractionDigits: 2)) km²")
+                                    Text("Density: \(formatDoubleValues(val: Double(country.population) / country.area, maximumFractionDigits: 2)) ppl / km²")
+                                }
                             }
-                            .scaledToFit()
-                            .frame(width: 50)
-                            .padding([.trailing], 10)
-                        }
-                        VStack(alignment: .leading) {
-                            Text(country.names.common)
-                                .font(.title2)
-                                .fontWeight(.bold)
-                            Text("Official Name: \(country.names.official)")
-                            
-                            Text("Population: \(country.population)")
-                            Text("Area: \(formatDoubleValues(val: country.area, maximumFractionDigits: 2)) km²")
-                            Text("Density: \(formatDoubleValues(val: Double(country.population) / country.area, maximumFractionDigits: 2)) ppl / km²")
-                        }}
-                    
+                        }.buttonStyle(.plain)
                 }.listStyle(.plain)
                     .onAppear {
                         Task {
@@ -90,6 +100,17 @@ struct CountryListView: View {
                             }
                         }
                     }
+            }.sheet(item: $selectedItem, onDismiss: {
+                self.selectedItem = nil
+            }) { country in
+                VStack {
+                    Text(country.names.common)
+                        .font(.title2)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        .padding([.top, .bottom], 10)
+                    MapPopupView(coordinates: country.coordinates)
+                }.id(country.id)
+                
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -140,3 +161,22 @@ struct CountryListView: View {
     }
 }
 
+struct MapPopupView: View {
+    private var coordinates: Coordinates
+    @State private var cameraPosition: MapCameraPosition
+    
+    init(coordinates: Coordinates) {
+        self.coordinates = coordinates
+        let region = MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: coordinates.lat, longitude: coordinates.lon),
+            span: MKCoordinateSpan(latitudeDelta: 50, longitudeDelta: 50)
+        )
+        _cameraPosition = State(initialValue: MapCameraPosition.region(region))
+    }
+    
+    var body: some View {
+        Map(position: $cameraPosition) {
+            Marker("Here it is.", coordinate: CLLocationCoordinate2D(latitude: coordinates.lat, longitude: coordinates.lon))
+        }
+    }
+}
