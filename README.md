@@ -6,6 +6,11 @@ Just a litte SwiftUI for testing out some features like REST API requests, navig
 * shows them in a list (this list can be sorted by various properties)
 * and has a little guess-the-flag-quiz included
 
+What's currently missing:
+
+* a bit of recactoring
+* error handling
+
 ## Screenshots
 
 ![Country list](md_images/screen1.png)
